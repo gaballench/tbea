@@ -1,0 +1,19 @@
+pandoc: 3.1.11
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  concatenation: concatenation.html
+  conflation: conflation.html
+  intro: intro.html
+  l_calibration_mcmctree: l_calibration_mcmctree.html
+  node_calibration_density: node_calibration_density.html
+  posterior_tree_distribution: posterior_tree_distribution.html
+  prior_posterior_comparisons: prior_posterior_comparisons.html
+  starting_tree: starting_tree.html
+  stratigraphic_intervals: stratigraphic_intervals.html
+  whyInitVals: whyInitVals.html
+  x_intercept: x_intercept.html
+last_built: 2025-08-19T15:44Z
+urls:
+  reference: https://gaballench.github.io/tbea/reference
+  article: https://gaballench.github.io/tbea/articles
