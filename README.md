@@ -1,5 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/gaballench/tbea/workflows/R-CMD-check/badge.svg)](https://github.com/gaballench/tbea/actions)
@@ -23,7 +24,9 @@ prior and posterior Bayesian densities, as well as code for calculating
 the combination of distributions using conflation of Hill (2008).
 Functions for estimating the origination time in collections of
 distributions using the x-intercept (e.g., Draper and Smith, 1998) and
-stratigraphic intervals (Marshall 2010) are also available.
+stratigraphic intervals (Marshall 2010) are also available. To learn
+more about the package uses, see our [pkgdown
+site](https://gaballench.github.io/tbea/).
 
 Hill, T. 2008. “Conflations of probability distributions”. Transactions
 of the American Mathematical Society, 363:3351-3372.
