@@ -1,10 +1,12 @@
 ---
 title: "Starting trees and how to specify them"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Starting trees and how to specify them}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Initial trees are used in three different ways in a divergence time estimation analysis: Random trees when (i) the topology and divergence times are co-estimated (e.g., `Beast2`), and user-defined trees when (ii) complex analyses are carried out comprising several terminals and multiple calibration points, and therefore a good initial tree helps reach convergence, and (iii) when we want to fix the topology and just estimate divergence times.

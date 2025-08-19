@@ -1,10 +1,12 @@
 ---
 title: "Inference using x-intercept methods"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Inference using x-intercept methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 These approaches are based on the assumption that the cumulative the pattern of appearance of divergence time events from an unknown time $t_0$ onwards can inform on the event time. A regression model with an additional parameter $x$-intercept may be thought of as an estimator for such point in time given the trend present in the linear model. Estimation of uncertainty regions such as confidence intervals on the $x$-intercept can be even more useful than the point estimate itself; such regions can be constructed by fitting an empirical cumulative density function.

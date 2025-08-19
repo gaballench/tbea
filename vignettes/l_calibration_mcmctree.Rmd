@@ -1,10 +1,12 @@
 ---
 title: "Specification of the Truncated Cauchy calibration density in MCMCTree"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Specification of the Truncated Cauchy calibration density in MCMCTree}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 It is possible to fix `p` to a given value describing the location of the distribution, that is, how close to the minimum age is the mode in the truncated Cauchy, and then estimate `c` so that the area under the curve attains a certain maximum age, allowing for some probability to be allocated to the right of it. The function `c_truncauchy` can be used provided that we have both age minimum and maximum, and define some probability `pr` to be allocated to the right of the maximum age.

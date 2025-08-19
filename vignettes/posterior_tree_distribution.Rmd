@@ -1,10 +1,12 @@
 ---
 title: "Posterior tree distribution"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Posterior tree distribution}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 There are two steps necessary for summarizing tree samples. One is to decide how many distinct topologies (disregarding branch lengths) are in the collection of trees, and then we need to summarize branch lengths for each of these tree subsets using any sensible summary measure (e.g., mean or median). The functions `topoFreq` and `summaryBrlen` aid in these two tasks respectively. `topoFreq` uses the Robinson-Foulds (RF) distance among trees in order to find clusters which are identical in topology and then bind them together in a list that we can later operate over. The RF distance is defined over unrooted trees, so it is necessary to check whether the input trees are. Unrooting a rooted tree will destroy the root node and then add up together both adjacent branch lengths, and this will be reflected when summarizing with` summaryBrlens` using the output of `topoFreq`. This will return one branch length less than the number present in the original sample of rooted trees. Accordingly, this method will only work on collections of unrooted trees, or collections of time trees of fixed topology where we are only interested in finding a summary values for branch lengths. It should not be used when both the topology and divergence times are being coestimated (e.g., when the posterior of trees comes from not fixing the topology as in `Beast2`, `RevBayes`, and `MrBayes`), but it is perfectly fine when the inference was done to estimate only the unrooted  topology and branch lengths, such as in standard tree inference in `MrBayes`.

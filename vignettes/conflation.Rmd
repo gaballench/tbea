@@ -1,10 +1,12 @@
 ---
 title: "Conflation of distributions"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Conflation of distributions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Combining different distributions into a single one is a useful tool for summarising different sources of information. Given a collection of $N$ distributions describing the same parameter, we aim at building a general distribution which incorporates information from the individual components. Multiple alternatives are available, and as with $x$-intercept estimation, the problem of summarising a collection of distributions has several possible answers. Hill (2011)^[Hill, T. (2011). Conflations of probability distributions. Transactions of the American Mathematical Society, 363(6), 3351-3372.] discussed these methods and proposed the conflation as a better and general way of combining distributions describing the same parameter.

@@ -1,10 +1,12 @@
 ---
 title: "Node calibration specification"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Node calibration specification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 When using time information associated to a fossil as calibration prior, age uncertainty usually come from biostratigraphy (e.g., if no radiometric estimate applies closer in the stratigraphic context to the fossil locality). Then, it is possible to represent that uncertainity using a Uniform distribution with first and last time parameters (e.g., $40.94$ and $41.6$ Ma respectively), or a Lognormal distribution with soft bounds. In the second case, we need to find the combination of mean and standard deviation that better describes a distribution whose density values $0.0$, $0.5$, and $0.975$ correspond to the quantiles defined by the uniform prior above, in order to use the age information to set a calibration point. The function `findParams` finds such combination of parameters for a given pair of quantiles. As the standard Lognormal distribution is defined between $(0,\infty)$, we need to apply an offset towards the minimum age. This will make it possible to relax the rather strong assumption about the node age, because by using a uniform prior the probability of observing times with fall outside the interval is zero.

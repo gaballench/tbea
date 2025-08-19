@@ -1,10 +1,12 @@
 ---
 title: "Prior-Posterior comparisons"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  html_document:
-    df_print: paged
-  pdf_document: default
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Prior-Posterior comparisons}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 After carrying out a divergence time analysis with `Beast2`, for example, we might be interested in comparing the prior and the posterior of node ages. We can use the function `crossplot` to generate a plot where the x-axis represents one analysis and the y-axis another, for instance, prior versus posterior:

@@ -1,14 +1,12 @@
-
-
-
-
 ---
 title: "Concatenation"
 author: "Gustavo A. Ballen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Concatenation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Tools are available for concatenating matrices, although few deal with concatenating different data types. The function `concatNexus` was designed for including both DNA and morphological matrices. If the morphological matrix is in some form of table (probably a spreadsheet), we can use the function `table2nexus` to read a table file from the disk and write back the nexus-formatted.

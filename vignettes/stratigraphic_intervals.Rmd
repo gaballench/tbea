@@ -1,10 +1,12 @@
 ---
 title: "Stratigraphic intervals"
-author: "Gustavo A. Balen and Sandra Reinales"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+author: "Gustavo A. Ballen and Sandra Reinales"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Stratigraphic intervals}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Some methods are available for estimating the confidence intervals on the extreme points of a stratigraphic interval, i.e., an estimate for the point of appearance and disappearance of a given taxon in geologic time. These methods are relevant here since we can think of a biogeographic events in the same way as taxa appear and become extinct. This approach is lacking in historical biogeography as far as we know, and seems to fit the main goal of determining the final point of connection between biogeographic areas. Marshall (2010)^[Marshall, C.R. (2010). Using confidence intervals to quantify the uncertainty in the end-points of stratigraphic ranges. Quantitative Methods in Paleobiology, 16:291-316.] summarised different approaches for estimating confidence intervals under certain sampling regimes, assumptions and confidence levels, ranging from classical to Bayesian estimators. The package `tbea` implements two of these methods, the classical (Strauss and Sadler, 1989)^[Strauss, D. and Sadler, P.M. (1989). Classical confidence intervals and Bayesian probability estimates for ends of local taxon ranges. Mathematical Geology, 21(4):411-427.] and the distribution-free estimator of Marshall (1994)^[Marshall, C.R. (1994). Confidence intervals on stratigraphic ranges: Partial relaxation of the assumption of randomly distributed fossil horizons. Paleobiology, 20(4):459-469.].
