@@ -25,8 +25,9 @@ the combination of distributions using conflation of Hill (2008).
 Functions for estimating the origination time in collections of
 distributions using the x-intercept (e.g., Draper and Smith, 1998) and
 stratigraphic intervals (Marshall 2010) are also available. To learn
-more about the package uses, see our [pkgdown
-site](https://gaballench.github.io/tbea/).
+more about the package uses, access the documentation, and the
+vignettes, see our [package
+website](https://gaballench.github.io/tbea/).
 
 Hill, T. 2008. “Conflations of probability distributions”. Transactions
 of the American Mathematical Society, 363:3351-3372.
