@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# tbea <a href="https://gaballench.github.io/tbea/"><img src="man/figures/logo.png" align="right" height="138" alt="tbea website" /></a>
+
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/gaballench/tbea/workflows/R-CMD-check/badge.svg)](https://github.com/gaballench/tbea/actions)
@@ -8,8 +10,6 @@
 [![](https://cranlogs.r-pkg.org/badges/tbea)](https://cran.r-project.org/package=tbea)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/tbea?color=blue)](https://cran.r-project.org/package=tbea)
 <!-- badges: end -->
-
-# tbea
 
 ## Overview
 
