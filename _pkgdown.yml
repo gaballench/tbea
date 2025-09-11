@@ -1,4 +1,5 @@
 url: https://gaballench.github.io/tbea/
 template:
   bootstrap: 5
+  light-switch: true
 
