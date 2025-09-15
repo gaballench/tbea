@@ -57,23 +57,25 @@ This package was created and maintained by Gustavo A. Ballen
 
 Please cite this package as follows:
 
-Ballen, G.A. & Reinales, S. (2025). tbea: tools for pre- and
+Ballen, G.A. & Reinales, S. 2025. tbea: tools for pre- and
 post-processing in Bayesian evolutionary analyses. Evolutionary Journal
-of the Linnean Society
-<https://www.biorxiv.org/content/10.1101/2024.06.18.599561>.
+of the Linnean Society, kzaf017,
+<https://doi.org/10.1093/evolinnean/kzaf017>
 
-If you use bibtex, use the following entry in your .bib file:
+If you use BibTex, use the following entry in your .bib file:
 
-    @article {Ballen2024.06.18.599561,
-        author = {Ballen, Gustavo A. and Reinales, Sandra},
-        title = {tbea: tools for pre- and post-processing in Bayesian evolutionary analyses},
+    @article{10.1093/evolinnean/kzaf017,
+        author = {Ballen, Gustavo A and Reinales, Sandra},
+        title = {{tbea: tools for pre- and post-processing in Bayesian evolutionary analyses}},
+        journal = {Evolutionary Journal of the Linnean Society},
+        pages = {kzaf017},
         year = {2025},
-        doi = {10.1101/2024.06.18.599561},
-        eprint = {https://www.biorxiv.org/content/early/2024/06/19/2024.06.18.599561.full.pdf},
-        journal = {Evolutionary Journal of the Linnean Society}
+        month = {09},
+        doi = {10.1093/evolinnean/kzaf017},
+        url = {https://doi.org/10.1093/evolinnean/kzaf017}
     }
 
 ## Problems?
 
-If you find a bug or unexpected behavior, please [file an
+If you find a bug or unexpected behaviour, please [file an
 issue](https://github.com/gaballench/tbea/issues).
