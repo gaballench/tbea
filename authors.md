@@ -9,7 +9,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/gaballench/tbea/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/gaballench/tbea/blob/v1.8.0/DESCRIPTION)
 
 Ballen G, Reinales S (2026). *tbea: Pre- And Post-Processing in Bayesian
 Evolutionary Analyses*. R package version 1.8.0,
