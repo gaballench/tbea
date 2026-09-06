@@ -4,7 +4,7 @@
 \alias{topoFreq}
 \title{Frequency of topologies in a tree sample}
 \usage{
-topoFreq(mphy, output = "index", maxtrees = 10000)
+topoFreq(mphy = NULL, output = "index", maxtrees = 10000, dist.matrix = NULL)
 }
 \arguments{
 \item{mphy}{An object of class multiPhylo}
@@ -12,6 +12,8 @@ topoFreq(mphy, output = "index", maxtrees = 10000)
 \item{output}{A character indicating whether the tree indices or the actual trees should be returned. Defaults to "index"}
 
 \item{maxtrees}{A numeric indicating whether to warn about having more trees than the arbitrary threshold}
+
+\item{dist.matrix}{A numeric matrix with the pairwise distances between topologies.}
 }
 \value{
 A list with an element containing the the different tree clusters (as multiPhylo)
@@ -30,6 +32,10 @@ issues. This can end up in situations which are difficult to debug but that from
 exactly that: More trees than memory can fit or which can be processed for calculating similarity. This number will _not_
 break the function call but will return a warning. Try to avoid modifying its default value unless you are sure it will not
 cause any issues under your computing conditions (e.g. when lots of trees are being processed but also large RAM is available).
+
+The argument `dist.matrix` allows the user to precalculate any desired topological distance and therefore frees one from the
+restriction to use only the Robinson-Fould distance. This means that topological pairwise distances between either phylogenetic
+trees _or_ networks can be used as input.
 }
 \examples{
 # tests
