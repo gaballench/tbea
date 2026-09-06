@@ -1,0 +1,47 @@
+# Specification of the Truncated Cauchy calibration density in MCMCTree
+
+It is possible to fix `p` to a given value describing the location of
+the distribution, that is, how close to the minimum age is the mode in
+the truncated Cauchy, and then estimate `c` so that the area under the
+curve attains a certain maximum age, allowing for some probability to be
+allocated to the right of it. The function `c_truncauchy` can be used
+provided that we have both age minimum and maximum, and define some
+probability `pr` to be allocated to the right of the maximum age.
+
+In this example, our minimum age is e.g. $`1`$ in units of $`100 Ma`$,
+and our maximum age is $`4.93`$ also in units of $`100 Ma`$. The minimum
+is a soft bound allowing $`0.025`$ of the density to be allocated to the
+left of it, whereas $`0.975`$ is the percentile at which we observe the
+maximum age. The quantity `p=0.001` has been chosen so that the mode is
+closer to the minimum age.
+
+``` r
+
+# load the package
+library(tbea)
+
+# estimate the c parameter for the L distribution
+cparam <- c_truncauchy(tl=0.4094, tr=0.4160, p=0.001, pr=0.975, al=0.025)
+cparam
+```
+
+    ## [1] 0.0009289821
+
+The function gives us an estimated of approximately $`2.0`$ for `c`.
+Thus we can specify this distribution in `MCMCTree` as
+`L(0.4094, 0.1, 0.0009289821, 0.025)`. We can use the packages `mcmc3r`
+[^1] to plot the `L` density. The following code should do the trick.
+
+``` r
+
+# load the package
+library(mcmc3r)
+
+# using the function dL to plot the L density
+curve(dL(x, tL=0.4094, p=0.001, c=cparam), from=0.4094, to=0.4160)
+```
+
+[^1]: dos Reis, M. et al. (2018). Using phylogenomic data to explore the
+    effects of relaxed clocks and calibration strategies on divergence
+    time estimation: Primates as a test case. Systematic Biology,
+    67(4):594-615.

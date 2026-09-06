@@ -1,0 +1,182 @@
+# Inference using x-intercept methods
+
+These approaches are based on the assumption that the cumulative the
+pattern of appearance of divergence time events from an unknown time
+$`t_0`$ onwards can inform on the event time. A regression model with an
+additional parameter $`x`$-intercept may be thought of as an estimator
+for such point in time given the trend present in the linear model.
+Estimation of uncertainty regions such as confidence intervals on the
+$`x`$-intercept can be even more useful than the point estimate itself;
+such regions can be constructed by fitting an empirical cumulative
+density function.
+
+Events in time start at some unobserved point and their realisations
+continue until the process finishes. Because they are delayed by some
+quantity after the generator process starts, we can use the pattern of
+occurrence in time in order to estimate the origination time. They can
+be described as a distribution regardless of its generator process,
+which will follow a probability density function (PDF) $`f(t)`$, with an
+associated cumulative density function (CDF) $`P(X < x)`$. We can fit an
+empirical CDF and then use a linear regression model. The only case
+where a CDF would be truly linear would be in the case of a uniform
+distribution where
+``` math
+P(X \leq x) = \frac{x}{b - a} \mathrm{\ for\ } x \in [a,b]
+```
+which implies that the empirical data in time follow a uniform
+distribution. For any other case, a fitted CDF would be a non-linear,
+and thus a linearisation should be applied to it.
+
+There are several methods available for linearising data (e.g., applying
+the logarithm, the square and cubic roots, the arcsine, or the
+reciprocal to the raw data). In the case of CDF fitting, we need to
+guarantee that the data are linear regardless of the PDF in order to
+estimate parameters of the model and thus the procedure is appropriate.
+After model fitting, a back transformation would be necessary for
+representing the time value of interest in real space.
+
+The linear model has the form
+``` math
+y = m x + b
+```
+where $`m`$ is the slope and $`b`$ is the $`y`$-intercept. However, we
+are not interested in any of these parameters but instead in a third
+one, the $`x`$-intercept, that is defined as the point in $`x`$ where
+$`y = 0`$. This parameter can be defined by letting $`y = 0`$ in the
+equation and thus
+``` math
+x_{y = 0} = -\frac{b}{m}
+```
+allows us to find the point at which the data began to be generated.
+
+Several methods have been proposed for estimating the uncertainty on the
+$`x`$-intercept estimate, from the intuitive inverse regression
+$`X \sim Y`$ to bootstraping methods. According to Seber and Lee
+(2013)[^1] this problem has long been discussed in the statistical
+literature without much consensus, although some are of interest due to
+theoretical appeal, ease of implementation, or simplification of
+assumptions. Uncertainty on the estimate of the $`x`$-intercept can be
+obtained through Taylor series simplification
+``` math
+\left(\frac{\sigma_X}{X}\right)^2 = \left(\frac{\sigma_a}{a}\right)^2 + \left(\frac{\sigma_b}{b}\right)^2 + 2 \left(\frac{\sigma_a}{a}\right) \left(\frac{\sigma_b}{b}\right) \rho_{ab}
+```
+for symmetric intervals.
+
+Another approach by Draper and Smith (1998)[^2] allows the calculation
+asymmetric confidence intervals by projecting the values of the
+confidence region around the linear model on the $`x`$-axis by
+manipulation of the curves describing the confidence region, what gives
+``` math
+CI_{X_{0}} = \hat{X_0} + \frac{(X_0 - \bar{X}) g \pm (t s / b_1) {\{[{(\hat{X_0} - \bar{X})}^2 S_{XX}] + (1 - g) / n\}}^{1/2}}{1 - g}
+```
+where $`g = t^2 s^2 / (b_1^2 / {S_{XX}})`$, $`b_1`$ is the slope,
+$`S_{XX}`$ is the sum of squares of $`X`$, $`t`$ is the $`t`$-statistic
+with n-2 degrees of freedom and at $`1 - \alpha/2`$ significance level,
+$`s^2`$ is the standard deviation, $`\hat{X_0}`$ is the estimation of
+the $`x`$-intercept, and $`\bar{X}`$ is the mean of $`X`$. Here we need
+to fit a linear model in order to use the curves for the confidence
+region, and we can use classical least square models or robust
+non-parametric regression Kloke and McKean (2014)[^3].
+
+It is also possible to use bootstrapping in order to estimate the
+variance and thus the confidence interval in asymmetric cases such as
+this one. Instead of using the estimates from a single fitted model on
+the coordinates of the empirical CDF, this method fits multiple models
+with random subsamples in order to construct a collection of estimated
+values the $`x`$-intercept and this provides a confidence interval.
+
+The package `tbea` implements estimation of the confidence interval for
+the $`x-`$intercept using the method of Draper and Smith (1998) as well
+as estimation via bootstrap. Both require a linear model which can be
+set to one of the following: either ordinary least squares, or a robust
+linear model Kloke and McKean (2014).
+
+``` r
+
+# load the package
+library(tbea)
+
+# load the data
+data(andes)
+ages <- andes$ages
+ages <- ages[complete.cases(ages)] # remove NAs
+ages <- ages[which(ages < 10)] # remove outliers
+
+# Draper-Smith, OLS
+draperSmithNormalX0 <- xintercept(x=ages, method="Draper-Smith",
+                                  alpha=0.05, robust=FALSE)
+
+# Draper-Smith, Robust fit
+draperSmithRobustX0 <-xintercept(x=ages, method="Draper-Smith",
+                                 alpha=0.05, robust=TRUE)
+
+# bootstrap, OLS
+bootstrapNormalX0 <- xintercept(x=ages, method="Bootstrap",
+                                p=c(0.025, 0.975), robust=FALSE)
+
+# bootstrap, Robust fit
+bootstrapRobustX0 <- xintercept(x=ages, method="Bootstrap",
+                                p=c(0.025, 0.975), robust=TRUE)
+
+# plot the estimations
+hist(ages, probability=TRUE,
+     col=rgb(red=0, green=0, blue=1, alpha=0.3),
+     xlim=c(0, 10), main="CDF-based on confidence intervals",
+     xlab="Age (Ma)")
+
+# plot the lines for the estimator of Draper and Smith using lm
+arrows(x0=draperSmithNormalX0$ci["upper"], y0=0.025,
+       x1=draperSmithNormalX0$ci["lower"], y1=0.025,
+       code=3, angle=90, length=0.1, lwd=3, col="darkblue")
+
+# plot the lines for the estimator of Draper and Smith using rfit
+arrows(x0=draperSmithRobustX0$ci["upper"], y0=0.05,
+       x1=draperSmithRobustX0$ci["lower"], y1=0.05,
+       code=3, angle=90, length=0.1,
+       lwd=3, col="darkgreen")
+
+# plot the lines for the estimator based on bootstrap
+arrows(x0=bootstrapRobustX0$ci["upper"], y0=0.075,
+       x1=bootstrapRobustX0$ci["lower"], y1=0.075,
+       code=3, angle=90, length=0.1,
+       lwd=3, col="darkred")
+
+# plot a legend
+legend(x="topright", legend=c("Draper and Smith with lm",
+                              "Draper and Smith with rfit",
+                              "Bootstrap on x0"),
+       col=c("darkblue", "darkgreen", "darkred"),
+       lty=1, lwd=3)
+```
+
+![](x_intercept_files/figure-html/unnamed-chunk-1-1.png)
+
+Both methods produce similar results. Although the method based on
+robust regression produced a CI wider than the one based on ordinary
+least squares, the bootstrap CI estimate was as wide as the two former
+combined. The fact that the bootstraping based on robust estimates is of
+more general application, it seems more adequate for these situations.
+It is noteworthy that these inferences are based on the assumption that
+the events in time are measured without error. However, this assumption
+relaxes due to the effect of re-sampling and uncertainty in the
+estimates. According to both estimators, the separation between cis- and
+trans-Andean areas took place between ca. $`4.3-5.8`$ Ma.
+
+These methods have produced results in line with those based on
+stratigraphic intervals. However, they allow estimate $`x`$-intercepts
+and consequently their confidence intervals that are not necessarily
+older than the oldest divergence time estimation event. Thus, they are
+robust to the assumption of measurement without error that is implicit
+in stratigraphic interval methods. Nevertheless, they are still
+sensitive to the presence of strong outliers as preliminary analyses
+showed that the regressions on these data with outliers affected
+strongly the robust regressions.
+
+[^1]: Seber, G.A.F. and Lee, A.J. (2013). Linear Regression Analysis.
+    Wiley Interscience, Hoboken, NJ, 2nd edition.
+
+[^2]: Draper, N.R. and Smith, H. (1998). Applied Regression Analysis.
+    Wiley Interscience, New York.
+
+[^3]: Kloke, J.D. and McKean, J.W. (2012). Rfit: Rank-based estimation
+    for linear models. The R Journal, 4(2):57-64.

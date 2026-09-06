@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Inference using x-intercept methods • tbea</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Inference using x-intercept methods">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tbea</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
                         <h4 data-toc-skip class="author">Gustavo A.
 Ballen and Sandra Reinales</h4>
             
-            <h4 data-toc-skip class="date">2025-09-15</h4>
+            <h4 data-toc-skip class="date">2026-09-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/gaballench/tbea/blob/main/vignettes/x_intercept.Rmd" class="external-link"><code>vignettes/x_intercept.Rmd</code></a></small>
       <div class="d-none name"><code>x_intercept.Rmd</code></div>
@@ -102,13 +102,13 @@ quantity after the generator process starts, we can use the pattern of
 occurrence in time in order to estimate the origination time. They can
 be described as a distribution regardless of its generator process,
 which will follow a probability density function (PDF)
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(t)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(t)</annotation></semantics></math>,
 with an associated cumulative density function (CDF)
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>X</mi><mo>&lt;</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(X &lt; x)</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>&lt;</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">P(X &lt; x)</annotation></semantics></math>.
 We can fit an empirical CDF and then use a linear regression model. The
 only case where a CDF would be truly linear would be in the case of a
 uniform distribution where
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>X</mi><mo>≤</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mi>x</mi><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mrow><mspace width="0.222em"></mspace><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mspace width="0.222em"></mspace></mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">P(X \leq x) = \frac{x}{b - a} \mathrm{\ for\ } x \in [a,b]</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false" form="prefix">(</mo><mi>X</mi><mo>≤</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mi>x</mi><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mrow><mspace width="0.222em"></mspace><mi mathvariant="normal">f</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mspace width="0.222em"></mspace></mrow><mi>x</mi><mo>∈</mo><mo stretchy="false" form="prefix">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">P(X \leq x) = \frac{x}{b - a} \mathrm{\ for\ } x \in [a,b]</annotation></semantics></math>
 which implies that the empirical data in time follow a uniform
 distribution. For any other case, a fitted CDF would be a non-linear,
 and thus a linearisation should be applied to it.</p>
@@ -137,7 +137,7 @@ where
 This parameter can be defined by letting
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y = 0</annotation></semantics></math>
 in the equation and thus
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow></msub><mo>=</mo><mo>−</mo><mfrac><mi>b</mi><mi>m</mi></mfrac></mrow><annotation encoding="application/x-tex">x_{y = 0} = -\frac{b}{m}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow></msub><mo>=</mo><mi>−</mi><mfrac><mi>b</mi><mi>m</mi></mfrac></mrow><annotation encoding="application/x-tex">x_{y = 0} = -\frac{b}{m}</annotation></semantics></math>
 allows us to find the point at which the data began to be generated.</p>
 <p>Several methods have been proposed for estimating the uncertainty on
 the
@@ -161,9 +161,9 @@ confidence region around the linear model on the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>-axis
 by manipulation of the curves describing the confidence region, what
 gives
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msub><mi>I</mi><msub><mi>X</mi><mn>0</mn></msub></msub><mo>=</mo><mover><msub><mi>X</mi><mn>0</mn></msub><mo accent="true">̂</mo></mover><mo>+</mo><mfrac><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>X</mi><mn>0</mn></msub><mo>−</mo><mover><mi>X</mi><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mi>g</mi><mo>±</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mi>s</mi><mi>/</mi><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mo stretchy="false" form="prefix">{</mo><mrow><mo stretchy="true" form="prefix">[</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mover><msub><mi>X</mi><mn>0</mn></msub><mo accent="true">̂</mo></mover><mo>−</mo><mover><mi>X</mi><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msub><mi>S</mi><mrow><mi>X</mi><mi>X</mi></mrow></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>g</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>n</mi><mo stretchy="false" form="postfix">}</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><mrow><mn>1</mn><mo>−</mo><mi>g</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">CI_{X_{0}} = \hat{X_0} + \frac{(X_0 - \bar{X}) g \pm (t s / b_1) {\{[{(\hat{X_0} - \bar{X})}^2 S_{XX}] + (1 - g) / n\}}^{1/2}}{1 - g}</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><msub><mi>I</mi><msub><mi>X</mi><mn>0</mn></msub></msub><mo>=</mo><mover><msub><mi>X</mi><mn>0</mn></msub><mo accent="true">̂</mo></mover><mo>+</mo><mfrac><mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>X</mi><mn>0</mn></msub><mo>−</mo><mover><mi>X</mi><mo accent="true">‾</mo></mover><mo stretchy="false" form="postfix">)</mo><mi>g</mi><mo>±</mo><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mi>s</mi><mi>/</mi><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><msup><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">[</mo><msup><mrow><mo stretchy="false" form="prefix">(</mo><mover><msub><mi>X</mi><mn>0</mn></msub><mo accent="true">̂</mo></mover><mo>−</mo><mover><mi>X</mi><mo accent="true">‾</mo></mover><mo stretchy="false" form="postfix">)</mo></mrow><mn>2</mn></msup><msub><mi>S</mi><mrow><mi>X</mi><mi>X</mi></mrow></msub><mo stretchy="false" form="postfix">]</mo><mo>+</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>g</mi><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>n</mi><mo stretchy="false" form="postfix">}</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><mrow><mn>1</mn><mo>−</mo><mi>g</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">CI_{X_{0}} = \hat{X_0} + \frac{(X_0 - \bar{X}) g \pm (t s / b_1) {\{[{(\hat{X_0} - \bar{X})}^2 S_{XX}] + (1 - g) / n\}}^{1/2}}{1 - g}</annotation></semantics></math>
 where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup><msup><mi>s</mi><mn>2</mn></msup><mi>/</mi><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>b</mi><mn>1</mn><mn>2</mn></msubsup><mi>/</mi><msub><mi>S</mi><mrow><mi>X</mi><mi>X</mi></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">g = t^2 s^2 / (b_1^2 / {S_{XX}})</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>=</mo><msup><mi>t</mi><mn>2</mn></msup><msup><mi>s</mi><mn>2</mn></msup><mi>/</mi><mo stretchy="false" form="prefix">(</mo><msubsup><mi>b</mi><mn>1</mn><mn>2</mn></msubsup><mi>/</mi><msub><mi>S</mi><mrow><mi>X</mi><mi>X</mi></mrow></msub><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g = t^2 s^2 / (b_1^2 / {S_{XX}})</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mn>1</mn></msub><annotation encoding="application/x-tex">b_1</annotation></semantics></math>
 is the slope,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi>X</mi><mi>X</mi></mrow></msub><annotation encoding="application/x-tex">S_{XX}</annotation></semantics></math>
@@ -258,7 +258,7 @@ and McKean (2014).</p>
 <span>                              <span class="st">"Bootstrap on x0"</span><span class="op">)</span>,</span>
 <span>       col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"darkblue"</span>, <span class="st">"darkgreen"</span>, <span class="st">"darkred"</span><span class="op">)</span>,</span>
 <span>       lty<span class="op">=</span><span class="fl">1</span>, lwd<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="x_intercept_files/figure-html/unnamed-chunk-1-1.png" width="700"></p>
+<p><img src="x_intercept_files/figure-html/unnamed-chunk-1-1.png" class="r-plt" alt="" width="700"></p>
 <p>Both methods produce similar results. Although the method based on
 robust regression produced a CI wider than the one based on ordinary
 least squares, the bootstrap CI estimate was as wide as the two former
@@ -293,7 +293,7 @@ strongly the robust regressions.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

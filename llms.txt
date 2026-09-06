@@ -1,0 +1,159 @@
+# tbea
+
+## Overview
+
+An R package for pre- and post-processing in phylogenetic and Bayesian
+inference of divergence times. Functions are provided for prior
+specification in divergence time estimation using fossils as well as
+other kinds of data. It provides tools for interacting with the input
+and output of Bayesian platforms in evolutionary biology such as
+‘BEAST2’, ‘MrBayes’, ‘RevBayes’, or ‘MCMCTree’. It Implements a simple
+measure similarity between probability density functions for comparing
+prior and posterior Bayesian densities, as well as code for calculating
+the combination of distributions using conflation of Hill (2008).
+Functions for estimating the origination time in collections of
+distributions using the x-intercept (e.g., Draper and Smith, 1998) and
+stratigraphic intervals (Marshall 2010) are also available. To learn
+more about the package uses, access the documentation, and the
+vignettes, see our [package
+website](https://gaballench.github.io/tbea/).
+
+Hill, T. 2008. “Conflations of probability distributions”. Transactions
+of the American Mathematical Society, 363:3351-3372.
+<doi:10.48550/arXiv.0808.1808>
+
+Draper, N. R. and Smith, H. 1998. “Applied Regression Analysis”. 1–706.
+Wiley Interscience, New York. <DOI:10.1002/9781118625590>,
+
+Marshall, C. R. 2010. “Using confidence intervals to quantify the
+uncertainty in the end-points of stratigraphic ranges”. Quantitative
+Methods in Paleobiology, 291–316. <DOI:10.1017/S1089332600001911>.
+
+## Installation
+
+You can now install the stable version from CRAN, and the development
+one using `remotes`:
+
+``` r
+
+install.packages("tbea")
+remotes::install_github("gaballench/tbea")
+```
+
+## Authorship and citation
+
+This package was created and maintained by Gustavo A. Ballen
+(@gaballench) and Sandra Reinales (@spreinalesl).
+
+Please cite this package as follows:
+
+Ballen, G.A. & Reinales, S. 2025. tbea: tools for pre- and
+post-processing in Bayesian evolutionary analyses. Evolutionary Journal
+of the Linnean Society, kzaf017,
+<https://doi.org/10.1093/evolinnean/kzaf017>
+
+If you use BibTex, use the following entry in your .bib file:
+
+``` R
+@article{10.1093/evolinnean/kzaf017,
+    author = {Ballen, Gustavo A and Reinales, Sandra},
+    title = {{tbea: tools for pre- and post-processing in Bayesian evolutionary analyses}},
+    journal = {Evolutionary Journal of the Linnean Society},
+    pages = {kzaf017},
+    year = {2025},
+    month = {09},
+    doi = {10.1093/evolinnean/kzaf017},
+    url = {https://doi.org/10.1093/evolinnean/kzaf017}
+}
+```
+
+## Problems?
+
+If you find a bug or unexpected behaviour, please [file an
+issue](https://github.com/gaballench/tbea/issues).
+
+# Package index
+
+## All functions
+
+- [`andes`](https://gaballench.github.io/tbea/reference/andes.md) :
+  Divergence-time estimation data for cis-trans-Andean pairs
+- [`c_truncauchy()`](https://gaballench.github.io/tbea/reference/c_truncauchy.md)
+  : c_truncauchy: Estimate the c parameter for the truncated cauchy L
+  distribution to be used in MCMCTree
+- [`concatNexus()`](https://gaballench.github.io/tbea/reference/concatNexus.md)
+  : concatNexus: Function for concatenation of nexus matrices both
+  morphological and molecular
+- [`conflate()`](https://gaballench.github.io/tbea/reference/conflate.md)
+  : conflate: Calculate the conflation of multiple distributions pdfs,
+  plot = TRUE, from, to, n, add = FALSE
+- [`crossplot()`](https://gaballench.github.io/tbea/reference/crossplot.md)
+  : crossplot: Plot the mean/median and HPD interval bars for pairs of
+  distributions
+- [`cynodontidae.posterior`](https://gaballench.github.io/tbea/reference/cynodontidae.posterior.md)
+  : Posterior samples for the family Cynodontidae
+- [`cynodontidae.prior`](https://gaballench.github.io/tbea/reference/cynodontidae.prior.md)
+  : Prior samples for the family Cynodontidae
+- [`density_fun()`](https://gaballench.github.io/tbea/reference/density_fun.md)
+  : density_fun: A way to represent distributions to be conflated
+- [`fasta2nexus()`](https://gaballench.github.io/tbea/reference/fasta2nexus.md)
+  : fasta2nexus (deprecated): Function for converting molecular
+  alignments from fasta to nexus format
+- [`findParams()`](https://gaballench.github.io/tbea/reference/findParams.md)
+  : Function for estimation of probability density function parameters
+  through quadratic optimization
+- [`laventa`](https://gaballench.github.io/tbea/reference/laventa.md) :
+  Geochronology samples from the Honda Group in Colombia
+- [`lognormalBeast()`](https://gaballench.github.io/tbea/reference/lognormalBeast.md)
+  : Constructing a curve for the user-specified lognormal prior using
+  Beast2 parameters
+- [`measureSimil()`](https://gaballench.github.io/tbea/reference/measureSimil.md)
+  : Calculate the Intersection Between Two Densities
+- [`mswd.test()`](https://gaballench.github.io/tbea/reference/mswd.test.md)
+  : Reduced chi-square test or mean square weighted deviation (mswd)
+  test
+- [`quantile_conflation()`](https://gaballench.github.io/tbea/reference/quantile_conflation.md)
+  : quantile_conflation: Calculate the quantile for a given probabiliy
+  under a conflated distribution
+- [`stratCI()`](https://gaballench.github.io/tbea/reference/stratCI.md)
+  : stratCI: Estimate the confidence intervals of endpoints in
+  stratigraphic intervals
+- [`summaryBrlen()`](https://gaballench.github.io/tbea/reference/summaryBrlen.md)
+  : summaryBrlen: Summarise branch lengths on trees with identical
+  topology
+- [`table2nexus()`](https://gaballench.github.io/tbea/reference/table2nexus.md)
+  : table2nexus: Read a data matrix in delimited format and convert into
+  a data matrix in nexus format
+- [`tnt2newick()`](https://gaballench.github.io/tbea/reference/tnt2newick.md)
+  : tnt2newick: Function for converting from TNT tree format to newick
+  parenthetical format
+- [`topoFreq()`](https://gaballench.github.io/tbea/reference/topoFreq.md)
+  : Frequency of topologies in a tree sample
+- [`xintercept()`](https://gaballench.github.io/tbea/reference/xintercept.md)
+  : xintercept: Estimate the x-intercept of an empirical cdf
+
+# Articles
+
+### All vignettes
+
+- [Concatenation](https://gaballench.github.io/tbea/articles/concatenation.md):
+- [Conflation of
+  distributions](https://gaballench.github.io/tbea/articles/conflation.md):
+- [Introduction to
+  tbea](https://gaballench.github.io/tbea/articles/intro.md):
+- [Specification of the Truncated Cauchy calibration density in
+  MCMCTree](https://gaballench.github.io/tbea/articles/l_calibration_mcmctree.md):
+- [Node calibration
+  specification](https://gaballench.github.io/tbea/articles/node_calibration_density.md):
+- [Posterior tree
+  distribution](https://gaballench.github.io/tbea/articles/posterior_tree_distribution.md):
+- [Prior-Posterior
+  comparisons](https://gaballench.github.io/tbea/articles/prior_posterior_comparisons.md):
+- [Starting trees and how to specify
+  them](https://gaballench.github.io/tbea/articles/starting_tree.md):
+- [Stratigraphic
+  intervals](https://gaballench.github.io/tbea/articles/stratigraphic_intervals.md):
+- [Why to use the mean of the quantiles as initial values in
+  \`optim\`?](https://gaballench.github.io/tbea/articles/whyInitVals.md):
+- [Inference using x-intercept
+  methods](https://gaballench.github.io/tbea/articles/x_intercept.md):

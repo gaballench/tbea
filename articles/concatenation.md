@@ -1,0 +1,62 @@
+# Concatenation
+
+Tools are available for concatenating matrices, although few deal with
+concatenating different data types. The function `concatNexus` was
+designed for including both DNA and morphological matrices. If the
+morphological matrix is in some form of table (probably a spreadsheet),
+we can use the function `table2nexus` to read a table file from the disk
+and write back the nexus-formatted.
+
+In this example, we use these functions to concatenate the DNA
+alignments and morphological data for the South American Sabre-Tooth
+Characins of the family Cynodontidae. Data are in the `examples`
+directory of the package repository.
+
+Let’s set up the environment for concatenating data:
+
+``` r
+
+# load the package
+library(tbea)
+
+# navigate to the examples/concatenation directory in the package repository
+setwd("examples/concatenation")
+```
+
+``` r
+
+table2nexus(path="data/morpho.csv",
+            datatype="standard",
+            header=FALSE,
+            sep=",",
+            con="data/morpho.trimmed.nex")
+```
+
+The morphological matrix is now in nexus format, so we can concatenate
+DNA (also in nexus format) and morphology partitions as follows:
+
+``` r
+
+nexmatrices <- list.files(path="data", pattern=".nex", full.names=TRUE)
+concatNexus(matrices=nexmatrices,
+            filename="concatenatedMolmorph.nexus", 
+            morpho=TRUE,
+            morphoFilename="data/morpho.trimmed.nex",
+            sumFilename="partitions.txt")
+
+# also, we can provide a pattern and a path 
+path <- "data"
+pattern <- "trimmed.nex$"
+concatNexus(pattern=pattern,
+            filename="concatenatedMolmorph.nexus",
+            path=path, 
+            morpho=TRUE,
+            morphoFilename=paste(path, grep(pattern="morpho.",
+                                            x=dir(path, pattern), value=TRUE),
+                                 sep="/"),
+            sumFilename="partitions.txt")
+```
+
+This will generate two files, one with the concatenated nexus alignment
+(`concatenatedMolMorph.nexus`) and one with information on the start and
+end position for each partition (`partitions.txt`).
