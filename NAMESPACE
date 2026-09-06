@@ -18,34 +18,45 @@ export(tnt2newick)
 export(topoFreq)
 export(xintercept)
 importFrom(Rfit,rfit)
-importFrom(ape,dist.topo)
-importFrom(ape,makeNodeLabel)
-importFrom(ape,root)
-importFrom(ape,unroot)
+importFrom(ape,
+  dist.topo,
+  makeNodeLabel,
+  root,
+  unroot
+)
 importFrom(boot,boot)
-importFrom(coda,HPDinterval)
-importFrom(coda,mcmc)
-importFrom(graphics,abline)
-importFrom(graphics,curve)
-importFrom(graphics,lines)
-importFrom(graphics,plot)
-importFrom(graphics,points)
-importFrom(graphics,polygon)
-importFrom(graphics,segments)
-importFrom(stats,approxfun)
-importFrom(stats,coef)
-importFrom(stats,cor)
-importFrom(stats,cutree)
-importFrom(stats,density)
-importFrom(stats,dlnorm)
-importFrom(stats,ecdf)
-importFrom(stats,hclust)
-importFrom(stats,integrate)
-importFrom(stats,lm)
-importFrom(stats,median)
-importFrom(stats,optim)
-importFrom(stats,pchisq)
-importFrom(stats,qt)
-importFrom(stats,quantile)
-importFrom(utils,read.delim)
-importFrom(utils,write.table)
+importFrom(coda,
+  HPDinterval,
+  mcmc
+)
+importFrom(graphics,
+  abline,
+  curve,
+  lines,
+  plot,
+  points,
+  polygon,
+  segments
+)
+importFrom(stats,
+  approxfun,
+  as.dist,
+  coef,
+  cor,
+  cutree,
+  density,
+  dlnorm,
+  ecdf,
+  hclust,
+  integrate,
+  lm,
+  median,
+  optim,
+  pchisq,
+  qt,
+  quantile
+)
+importFrom(utils,
+  read.delim,
+  write.table
+)
